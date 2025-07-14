@@ -1,7 +1,7 @@
 function App() {
   return (
-    <div>
-
+    <div className='container'>
+      <a className='logo' href='/'>Weather forecast</a>
     </div>
   )
 }
