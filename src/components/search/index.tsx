@@ -31,7 +31,7 @@ const Search = ({ onSearchChange }: Props) => {
       ...base,
       backgroundColor: state.isFocused ? "#f0f8ff" : "#fff",
       color: "#333",
-      padding: "10px 15px",
+      padding: "8px 15px",
     }),
     placeholder: (base) => ({
       ...base,
