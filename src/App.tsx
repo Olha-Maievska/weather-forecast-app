@@ -1,20 +1,18 @@
-import type { SingleValue } from 'react-select';
-import Search from './components/search'
+import CurrentWeather from "./components/current-weather";
+import Header from "./components/header";
 
 function App() {
-  const handleOnSearchChange = (searchData: SingleValue<string>) => {
-    console.log("Search value changed:", searchData);
-  }
+  const night = new Date().getHours() >= 18 || new Date().getHours() < 6;
 
   return (
-    <div className='container'>
-      <header className='header'>
-        <a className='logo' href='/'>Weather forecast</a>
-        <Search onSearchChange={handleOnSearchChange}/>
-      </header>
-      
+    <div className={`app app__${night ? "night" : "day"}`}>
+      <Header />
+
+      <main className="container">
+        <CurrentWeather />
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

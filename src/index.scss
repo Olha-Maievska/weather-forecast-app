@@ -1,25 +1,30 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-body {  
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
   font-size: 16px;
   font-weight: 400;
 
-  color: #333;
-  background-color: #EDF5FF;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -36,31 +41,27 @@ a {
   padding: 0 15px;
 }
 
-.logo {
-  display: inline-block;
-  font-size: 24px;
-  font-weight: bold;
+.app {
+  width: 100%;
+  height: 100vh;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.app__day {
+  background: url('./assets/images/day-bg.jpeg') no-repeat center center fixed;
+  background-size: cover;
 
-  margin-top: 20px;
+  color: #000;
+}
+
+.app__night {
+  background: url('./assets/images/night-bg.jpg') no-repeat center center fixed; 
+  background-size: cover;
+  
+  color: #f6efef;
 }
 
 @media (max-width: 640px) {
   .container {
     padding: 0 10px;
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo {
-    margin: 0 auto 15px;
   }
 }

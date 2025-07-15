@@ -9,7 +9,7 @@ import type {
 import styles from "./Search.module.scss";
 
 interface Props {
-  onSearchChange: (value: string) => void;
+  onSearchChange: (value: SingleValue<OptionType>) => void;
 }
 
 const Search = ({ onSearchChange }: Props) => {
@@ -18,8 +18,8 @@ const Search = ({ onSearchChange }: Props) => {
   const customStyles: StylesConfig<{ value: string; label: string }, false> = {
     control: (base, state) => ({
       ...base,
-      backgroundColor: "#ffffff",
-      borderColor: state.isFocused ? "#2684FF" : "transparent",
+      backgroundColor: "#f6efef",
+      borderColor: state.isFocused ? "#227df4" : "transparent",
       boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.1)",
       borderRadius: "20px",
       paddingLeft: 5,
@@ -29,20 +29,21 @@ const Search = ({ onSearchChange }: Props) => {
     }),
     option: (base, state) => ({
       ...base,
-      backgroundColor: state.isFocused ? "#f0f8ff" : "#fff",
+      backgroundColor: state.isFocused ? "#d4e1ee" : "#f6efef",
       color: "#333",
       padding: "8px 15px",
     }),
     placeholder: (base) => ({
       ...base,
-      color: "#999",
+      color: "#8b8a8a",
       fontFamily: "Roboto, sans-serif",
+      fontSize: "14px",
     }),
   };
 
   const handleOnChange = (searchData: SingleValue<OptionType>) => {
     setSearchValue(searchData);
-    onSearchChange(searchData?.value ?? "");
+    onSearchChange(searchData);
   };
 
   const loadOptions = async (
@@ -78,7 +79,7 @@ const Search = ({ onSearchChange }: Props) => {
         styles={customStyles}
         value={searchValue}
         onChange={handleOnChange}
-        placeholder="Search for a city..."
+        placeholder="Hledejte počasí pro vaše místo..."
         debounceTimeout={500}
         loadOptions={loadOptions}
       />
