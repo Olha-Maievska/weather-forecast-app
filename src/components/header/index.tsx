@@ -5,6 +5,7 @@ import styles from "./Header.module.scss";
 import { useDispatch } from "react-redux";
 import { setForecastData, setWeatherData } from "../../store/weatherSlice";
 import type { WeatherData } from "../../interfaces/weather.interface";
+import type { ForecastData } from '../../interfaces/forecast.interface';
 
 const apiKey = "04fcb1736a175c9c97a82b69d129d9c1";
 const apiUrl = "https://api.openweathermap.org/data/2.5";
@@ -25,13 +26,13 @@ const Header = () => {
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
         const weatherResponse: WeatherData = await response[0].json();
-        const forecastResponse = await response[1].json();
+        const forecastResponse: ForecastData = await response[1].json();
 
         dispatch(
           setWeatherData({ ...weatherResponse, city: searchData.label })
         );
         dispatch(
-          setForecastData({ ...forecastResponse, city: searchData.label })
+          setForecastData({ ...forecastResponse })
         );
 
         console.log("Weather data:", weatherResponse);

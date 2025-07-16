@@ -2,7 +2,7 @@ import { useAppSelector } from "../../hooks/hooks";
 import styles from "./CurrentWeather.module.scss";
 
 const CurrentWeather = () => {
-  const { currentWeather } = useAppSelector((state) => state.weather);
+  const currentWeather = useAppSelector((state) => state.weather.currentWeather);
 
   if (!currentWeather) {
     return null;
