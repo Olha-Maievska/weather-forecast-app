@@ -20,3 +20,21 @@ export interface SearchCity {
 export interface SearchResponse {
   data: SearchCity[];
 }
+
+export interface OpenCageResult {
+  formatted: string;
+  geometry: {
+    lat: number;
+    lng: number;
+  };
+  components: {
+    city?: string;
+    town?: string;
+    village?: string;
+    country: string;
+  };
+}
+
+export interface OpenCageResponse {
+  results: OpenCageResult[];
+}

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import type { SingleValue, StylesConfig } from "react-select";
-import { GEO_API_URL, geoApiOptions } from "../../services/api";
 import type {
+  OpenCageResponse,
+  OpenCageResult,
   OptionType,
-  SearchResponse,
 } from "../../interfaces/search.interface";
 import styles from "./Search.module.scss";
 
@@ -48,27 +48,40 @@ const Search = ({ onSearchChange }: Props) => {
 
   const loadOptions = async (
     inputValue: string
-  ): Promise<{
-    options: { value: string; label: string }[];
-  }> => {
+  ): Promise<{ options: OptionType[] }> => {
+    const apiKey = "040052fc774643d1a8303af92ae5c97c";
+    if (!apiKey || !inputValue) return { options: [] };
+
     try {
-      const response = await fetch(
-        `${GEO_API_URL}/cities?minPopulation=100000&namePrefix=${inputValue}`,
-        geoApiOptions
-      );
-      const data: SearchResponse = await response.json();
-      if (!data.data || data.data.length === 0) {
+      const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
+        inputValue
+      )}&language=cs&limit=5&countrycode=cz&key=${apiKey}`;
+
+      const response = await fetch(url);
+      const data: OpenCageResponse = await response.json();
+
+      if (!data.results || data.results.length === 0) {
         return { options: [] };
       }
 
+      const cityResults = data.results.filter((result) => {
+        const components = result.components;
+        return components.city || components.town || components.village;
+      });
+
+      const unique = new Map<string, OpenCageResult>();
+      cityResults.forEach((r) => {
+        unique.set(r.formatted, r);
+      });
+
       return {
-        options: data.data.map((city) => ({
-          value: `${city.latitude} ${city.longitude}`,
-          label: `${city.name}, ${city.countryCode}`,
+        options: Array.from(unique.values()).map((city) => ({
+          value: `${city.geometry.lat} ${city.geometry.lng}`,
+          label: city.formatted,
         })),
       };
     } catch (error) {
-      console.error("Error loading options:", error);
+      console.error("Error fetching search data:", error);
       return { options: [] };
     }
   };

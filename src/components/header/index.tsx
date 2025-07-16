@@ -2,29 +2,40 @@ import Search from "../search";
 import type { OptionType } from "../../interfaces/search.interface";
 import type { SingleValue } from "react-select";
 import styles from "./Header.module.scss";
+import { useDispatch } from "react-redux";
+import { setForecastData, setWeatherData } from "../../store/weatherSlice";
+import type { WeatherData } from "../../interfaces/weather.interface";
 
-const apiKey = import.meta.env.VITE_WEATHER_API_KEY!;
-const apiUrl = import.meta.env.VITE_WEATHER_API_URL!;
+const apiKey = "04fcb1736a175c9c97a82b69d129d9c1";
+const apiUrl = "https://api.openweathermap.org/data/2.5";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const handleOnSearchChange = (searchData: SingleValue<OptionType>) => {
     if (!searchData) return;
     const [lat, lon] = searchData.value.split(" ");
 
     const currentWeatherFetch = fetch(
-      `${apiUrl}/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+      `${apiUrl}/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&lang=cz`
     );
     const forecastFetch = fetch(
-      `${apiUrl}/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
+      `${apiUrl}/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&lang=cz`
     );
 
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
-        const weatherResponse = await response[0].json();
+        const weatherResponse: WeatherData = await response[0].json();
         const forecastResponse = await response[1].json();
 
-        console.log("Current Weather:", weatherResponse);
-        console.log("Forecast:", forecastResponse);
+        dispatch(
+          setWeatherData({ ...weatherResponse, city: searchData.label })
+        );
+        dispatch(
+          setForecastData({ ...forecastResponse, city: searchData.label })
+        );
+
+        console.log("Weather data:", weatherResponse);
+        console.log("Forecast data:", forecastResponse);
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
