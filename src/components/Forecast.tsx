@@ -1,17 +1,9 @@
 import { useAppSelector } from "@/hooks";
 import type { ForecastItem } from "@/interfaces/forecast.interface";
-import { formatDateOnly } from "@/utils";
+import { browserLang, capitalizeFirstLetter, formatDateOnly } from "@/utils";
 import styles from "@/styles/Forecast.module.scss";
-
-const weekdays = [
-  "Neděle",
-  "Pondelí",
-  "Uterý",
-  "Středa",
-  "Śtvrtek",
-  "Pátek",
-  "Sobota",
-];
+import { dayTranslations } from "@/const/countries";
+import { DropletIcon, Wind } from "lucide-react";
 
 const Forecast = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
@@ -26,6 +18,7 @@ const Forecast = () => {
 
   const todayStr = formatDateOnly(today);
   const tomorrowStr = formatDateOnly(tomorrow);
+  const translation = dayTranslations[browserLang] || dayTranslations["en"];
 
   const dailyMap = new Map<string, ForecastItem[]>();
 
@@ -51,49 +44,61 @@ const Forecast = () => {
       const tempMin = Math.round(Math.min(...temps));
 
       const date = new Date(maxItem.dt * 1000);
-      let dayLabel = weekdays[date.getDay()];
-      if (dateStr === todayStr) dayLabel = "Dnes";
-      else if (dateStr === tomorrowStr) dayLabel = "Zítra";
+
+      let dayName = "";
+      if (dateStr === todayStr) {
+        dayName = translation.today;
+      } else if (dateStr === tomorrowStr) {
+        dayName = translation.tomorrow;
+      } else {
+        dayName = capitalizeFirstLetter(
+          new Intl.DateTimeFormat(browserLang, { weekday: "long" }).format(date)
+        );
+      }
+
+      const dateLabel = new Intl.DateTimeFormat(browserLang, {
+        day: "numeric",
+        month: "long",
+      }).format(date);
 
       return {
         dt: maxItem.dt,
-        dayLabel,
+        dayName,
+        dateLabel,
         tempMax,
         tempMin,
         icon: maxItem.weather[0].icon,
         description: maxItem.weather[0].description,
         windSpeed: maxItem.wind.speed,
+        humidity: maxItem.main.humidity,
       };
     });
 
   return (
     <table className={styles.forecast}>
-      <thead>
-        <tr className={styles.forecast__header}>
-          <th>Den</th>
-          <th>Popis</th>
-          <th>Máx</th>
-          <th>Mín</th>
-          <th>Vítr</th>
-        </tr>
-      </thead>
       <tbody>
         {dailyForecast.map((item) => (
           <tr key={item.dt} className={styles.forecast__row}>
-            <td className={styles.forecast__day}>{item.dayLabel}</td>
+            <td className={styles.forecast__day}>
+              {item.dayName} <span>{item.dateLabel}</span>
+            </td>
             <td className={styles.forecast__weather}>
               <img
                 className={styles.forecast__icon}
                 src={`images/icons/${item.icon}.png`}
                 alt={item.description}
               />
-              <span className={styles.forecast__description}>
-                {item.description}
-              </span>
             </td>
-            <td className={styles.forecast__temp}>{item.tempMin}°C</td>
-            <td className={styles.forecast__temp}>{item.tempMax}°C</td>
-            <td>{item.windSpeed.toFixed(1)} m/s</td>
+            <td className={styles.forecast__min}>{item.tempMin}°C</td>
+            <td className={styles.forecast__max}>{item.tempMax}°C</td>
+            <td className={styles.forecast__detais}>
+              <DropletIcon className={styles.forecast__detais__icon} />
+              {item.humidity} %
+            </td>
+            <td className={styles.forecast__detais}>
+              <Wind className={styles.forecast__detais__icon} />
+              {item.windSpeed.toFixed(1)} m/s
+            </td>
           </tr>
         ))}
       </tbody>

@@ -16,10 +16,17 @@
     flex-direction: column;
   }
 
+  &__location {
+    width: 1rem;
+    height: 1rem;
+    margin-right: .5rem;
+  }
+
   &__city {
     font-size: 1.5rem;
     font-weight: 600;
   }
+
   &__temperature {
     display: flex;
     align-items: center;

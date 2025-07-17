@@ -1,20 +1,22 @@
 import type { WeatherData } from "@/interfaces/weather.interface";
 import type { ForecastData } from "@/interfaces/forecast.interface";
+import { getSafeLangCode, browserLang } from "@/utils";
 
-export const apiKey = import.meta.env.VITE_WEATHER_API_KEY!;
-export const apiUrl = import.meta.env.VITE_WEATHER_API_URL!;
+const apiKey = import.meta.env.VITE_WEATHER_API_KEY!;
+const apiUrl = import.meta.env.VITE_WEATHER_API_URL!;
+const langCode = getSafeLangCode(browserLang);
 
 export const fetchWeatherData = async (cityName: string) => {
   const currentWeatherFetch = fetch(
     `${apiUrl}/weather?q=${encodeURIComponent(
       cityName
-    )}&units=metric&appid=${apiKey}&lang=en`
+    )}&units=metric&appid=${apiKey}&lang=${langCode}`
   );
 
   const forecastFetch = fetch(
     `${apiUrl}/forecast?q=${encodeURIComponent(
       cityName
-    )}&units=metric&appid=${apiKey}&lang=en`
+    )}&units=metric&appid=${apiKey}&lang=${langCode}`
   );
 
   const [weatherResponse, forecastResponse] = await Promise.all([
@@ -27,7 +29,6 @@ export const fetchWeatherData = async (cityName: string) => {
 
   console.log(apiUrl);
   console.log(apiKey);
-  
 
   return { weather, forecast };
 };

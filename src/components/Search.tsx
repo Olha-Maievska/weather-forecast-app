@@ -3,16 +3,18 @@ import type { SearchData } from "@/interfaces/search.interface";
 import { SearchIcon } from "lucide-react";
 import { useAppDispatch } from "@/hooks";
 import { setForecastData, setWeatherData } from "../store/weatherSlice";
-import { allowedCountries, debounce } from "../utils";
+import { debounce } from "../utils";
 import styles from "@/styles/Search.module.scss";
 import { useCityList } from "@/hooks/useCityList";
 import { fetchWeatherData } from "@/api/weatherApi";
+import { allowedCountries } from '@/const/countries';
 
 const Search = () => {
   const [query, setQuery] = useState("");
 
   const [filteredCities, setFilteredCities] = useState<SearchData[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [placeholder, setPlaceholder] = useState("Search for a city...");
   const dispatch = useAppDispatch();
   const allCities = useCityList();
 
@@ -29,7 +31,7 @@ const Search = () => {
         const filtered = allCities
           .filter((city) => allowedCountries.includes(city.country))
           .filter((city) =>
-            city.name.toLowerCase().includes(value.toLowerCase())
+            city.name.toLowerCase().startsWith(value.toLowerCase())
           )
           .slice(0, 5);
 
@@ -44,7 +46,8 @@ const Search = () => {
       const { weather, forecast } = await fetchWeatherData(cityName);
       dispatch(setWeatherData(weather));
       dispatch(setForecastData(forecast));
-      setQuery(weather.name || "");
+      setQuery("");
+      setPlaceholder(weather.name);
       setFilteredCities([]);
       setSelectedIndex(0);
 
@@ -89,7 +92,7 @@ const Search = () => {
             handleSearchChange(e.target.value);
           }}
           onKeyDown={handleKeyDown}
-          placeholder="Enter city..."
+          placeholder={placeholder}
         />
         <button className={styles.search__button} type="submit">
           <SearchIcon className={styles.search__icon} />

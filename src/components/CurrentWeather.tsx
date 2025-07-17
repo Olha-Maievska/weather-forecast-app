@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/hooks";
 import styles from "@/styles/CurrentWeather.module.scss";
+import { MapPin } from "lucide-react";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(
@@ -18,7 +19,12 @@ const CurrentWeather = () => {
   return (
     <div className={styles.weather}>
       <div className={styles.weather__top}>
-        <p className={styles.weather__city}>{cityName}</p>
+        <p className={styles.weather__city}>
+          <span>
+            <MapPin className={styles.weather__location} />
+          </span>
+          {cityName}
+        </p>
         <p className={styles.weather__temperature}>
           <span>{temp}°C</span>
           <img
