@@ -1,7 +1,41 @@
 import Search from "./Search";
+import { setForecastData, setWeatherData } from "@/store/weatherSlice";
+import { useAppDispatch } from "@/hooks";
+import { DEFAULT_CITY } from "@/const";
+import { useEffect } from "react";
+import { fetchWeatherData } from "@/api/weatherApi";
 import styles from "@/styles/Header.module.scss";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const loadWeather = async () => {
+      try {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            const { latitude, longitude } = position.coords;
+            const { weather, forecast } = await fetchWeatherData({
+              lat: latitude,
+              lon: longitude,
+            });
+            dispatch(setWeatherData(weather));
+            dispatch(setForecastData(forecast));
+          },
+          async () => {
+            const { weather, forecast } = await fetchWeatherData(DEFAULT_CITY);
+            dispatch(setWeatherData(weather));
+            dispatch(setForecastData(forecast));
+          }
+        );
+      } catch (err) {
+        console.error("Failed to load initial weather data", err);
+      }
+    };
+
+    loadWeather();
+  }, [dispatch]);
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.header__content}`}>

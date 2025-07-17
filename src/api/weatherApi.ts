@@ -6,17 +6,21 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY!;
 const apiUrl = import.meta.env.VITE_WEATHER_API_URL!;
 const langCode = getSafeLangCode(browserLang);
 
-export const fetchWeatherData = async (cityName: string) => {
+export const fetchWeatherData = async (
+  cityOrCoords: string | { lat: number; lon: number }
+) => {
+  const isCoords = typeof cityOrCoords !== "string";
+
+  const queryParams = isCoords
+    ? `lat=${cityOrCoords.lat}&lon=${cityOrCoords.lon}`
+    : `q=${encodeURIComponent(cityOrCoords)}`;
+
   const currentWeatherFetch = fetch(
-    `${apiUrl}/weather?q=${encodeURIComponent(
-      cityName
-    )}&units=metric&appid=${apiKey}&lang=${langCode}`
+    `${apiUrl}/weather?${queryParams}&units=metric&appid=${apiKey}&lang=${langCode}`
   );
 
   const forecastFetch = fetch(
-    `${apiUrl}/forecast?q=${encodeURIComponent(
-      cityName
-    )}&units=metric&appid=${apiKey}&lang=${langCode}`
+    `${apiUrl}/forecast?${queryParams}&units=metric&appid=${apiKey}&lang=${langCode}`
   );
 
   const [weatherResponse, forecastResponse] = await Promise.all([
@@ -26,9 +30,6 @@ export const fetchWeatherData = async (cityName: string) => {
 
   const weather: WeatherData = await weatherResponse.json();
   const forecast: ForecastData = await forecastResponse.json();
-
-  console.log(apiUrl);
-  console.log(apiKey);
 
   return { weather, forecast };
 };
