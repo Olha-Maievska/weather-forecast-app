@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { SearchData } from "@/interfaces/search.interface";
 import { SearchIcon } from "lucide-react";
 import { useAppDispatch } from "@/hooks";
@@ -12,8 +12,11 @@ const Search = () => {
   const [query, setQuery] = useState("");
 
   const [filteredCities, setFilteredCities] = useState<SearchData[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const dispatch = useAppDispatch();
   const allCities = useCityList();
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchChange = useMemo(
     () =>
@@ -31,25 +34,47 @@ const Search = () => {
           .slice(0, 5);
 
         setFilteredCities(filtered);
+        setSelectedIndex(0);
       }, 300),
     [allCities]
   );
+
   const fetchWeather = async (cityName: string) => {
     try {
       const { weather, forecast } = await fetchWeatherData(cityName);
       dispatch(setWeatherData(weather));
       dispatch(setForecastData(forecast));
-      setQuery("");
+      setQuery(weather.name || "");
       setFilteredCities([]);
+      setSelectedIndex(0);
+
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
     } catch (err) {
       console.error("Error fetching weather:", err);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (filteredCities.length === 0) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev + 1) % filteredCities.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) =>
+        prev === 0 ? filteredCities.length - 1 : prev - 1
+      );
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      fetchWeather(filteredCities[selectedIndex].name);
     }
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     fetchWeather(query);
-    console.log(import.meta.env.VITE_API_URL);
-    console.log(import.meta.env.VITE_API_KEY);
   };
 
   return (
@@ -58,23 +83,27 @@ const Search = () => {
         <input
           className={styles.search__input}
           value={query}
+          ref={inputRef}
           onChange={(e) => {
             setQuery(e.target.value);
             handleSearchChange(e.target.value);
           }}
+          onKeyDown={handleKeyDown}
           placeholder="Enter city..."
         />
-        <button className={styles.search__button} type='submit'>
+        <button className={styles.search__button} type="submit">
           <SearchIcon className={styles.search__icon} />
         </button>
       </form>
 
       {filteredCities.length > 0 && (
         <ul className={styles.search__list}>
-          {filteredCities.map((city) => (
+          {filteredCities.map((city, index) => (
             <li
               key={city.id}
-              className={styles.search__item}
+              className={`${styles.search__item} ${
+                index === selectedIndex ? styles.search__item__active : ""
+              }`}
               onClick={() => fetchWeather(city.name)}
               onMouseDown={() => fetchWeather(city.name)}
             >

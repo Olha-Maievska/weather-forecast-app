@@ -1,87 +1,94 @@
 @use "./variables.scss" as *;
 
 .search {
-	width: 350px;
-	position: relative;
-	padding-bottom: .8rem;
+  width: 350px;
+  position: relative;
+  padding-bottom: 0.8rem;
 
-	&__wrapper {
-		position: relative;
-	}
+  &__wrapper {
+    position: relative;
+  }
 
-	&__input {
-		width: 100%;
-		padding: .6rem 1rem .6rem 2rem;
-		background: $secondary-color;
-		border: transparent;
-		border-radius: 1rem;
+  &__input {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2rem;
+    background: $secondary-color;
+    border: transparent;
+    border-radius: 1rem;
 
-		&:focus {
-			outline: $primary-color solid 2px;
-		}
-	}
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: $black-color;
 
-	&__input::placeholder {
-		font-family: "Roboto", sans-serif;
-		font-size: .9rem;
-		color: $gray-color;
-	}
+    &:focus {
+      outline: $primary-color solid 2px;
+    }
+  }
 
-	&__input:focus ~ &__icon {
-		color: $primary-color;
-	}
+  &__input::placeholder {
+    color: $gray-color;
+  }
 
-	&__button {
-		position: absolute;
-		top: 50%;
-		left: 5px;
-		transform: translateY(-50%);
+  &__input:focus ~ &__icon {
+    color: $primary-color;
+  }
 
-		border: none;
-		display: flex;
-		background: transparent;
-		justify-content: center;
-		align-items: center;
-	}
+  &__button {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
 
-	&__icon {
-		width: 1rem;
-		height: 1rem;
-		color: $gray-color;
-	}
+    border: none;
+    display: flex;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+  }
 
-	&__list {
-		width: 100%;
-		display: none;
-		opacity: 0;
-		overflow: hidden;
-		transition: opacity 0.2s;
+  &__icon {
+    width: 1rem;
+    height: 1rem;
+    color: $gray-color;
+  }
 
-		position: absolute;
-		top: 100%;
-		left: 0;
+  &__list {
+    width: 100%;
+    display: none;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.2s;
 
-		background: $secondary-color;
-		color: $black-color;
-		border-radius: 1rem;
-	}
+    position: absolute;
+    top: 100%;
+    left: 0;
 
-	&__wrapper:focus-within + .search__list {
-		display: block;
-		opacity: 1;
-	  }
+    background: $secondary-color;
+    color: $black-color;
+    border-radius: 1rem;
+  }
 
-	&__item {
-		padding: .5rem 2rem;
+  &__wrapper:focus-within + .search__list {
+    display: block;
+    opacity: 1;
+  }
 
-		transition: all .2s ease-in-out;
-		cursor: pointer;
+  &__item {
+    padding: 0.5rem 2rem;
 
-		&:hover {
-			background: $primary-color;
-			color: $secondary-color;
-		}
-	}
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background: $primary-color;
+      color: $secondary-color;
+    }
+  }
+
+  &__item__active {
+    background: $primary-color;
+    color: $secondary-color;
+  }
 }
 
 @media (max-width: 640px) {
