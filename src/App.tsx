@@ -1,5 +1,6 @@
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
+import ForecastChart from './components/ForecastChart';
 import Header from "./components/Header";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <main className="container">
         <CurrentWeather />
         <Forecast />
+        <ForecastChart />
       </main>
     </div>
   );

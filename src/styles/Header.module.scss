@@ -10,7 +10,7 @@
 }
 
 .header {
-  padding: 20px 0 60px;
+  margin-bottom: 3rem;
 
   &__content {
     display: flex;
@@ -26,6 +26,6 @@
   }
 
   .logo {
-    margin: 0 auto 15px;
+    margin: 0 auto 1rem;
   }
 }
