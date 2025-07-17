@@ -1,0 +1,43 @@
+@use "./variables.scss" as *;
+
+.weather {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto 50px;
+  padding: 1.5rem;
+
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0.7rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  &__top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__city {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  &__temperature {
+    display: flex;
+    align-items: center;
+  }
+
+  &__temperature span {
+    font-size: 2.8rem;
+    font-weight: 700;
+  }
+
+  &__description {
+    color: #010028;
+    font-weight: 500;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0.5rem;
+  }
+}

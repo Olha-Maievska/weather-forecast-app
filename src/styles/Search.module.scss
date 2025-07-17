@@ -1,0 +1,91 @@
+@use "./variables.scss" as *;
+
+.search {
+	width: 350px;
+	position: relative;
+	padding-bottom: .8rem;
+
+	&__wrapper {
+		position: relative;
+	}
+
+	&__input {
+		width: 100%;
+		padding: .6rem 1rem .6rem 2rem;
+		background: $secondary-color;
+		border: transparent;
+		border-radius: 1rem;
+
+		&:focus {
+			outline: $primary-color solid 2px;
+		}
+	}
+
+	&__input::placeholder {
+		font-family: "Roboto", sans-serif;
+		font-size: .9rem;
+		color: $gray-color;
+	}
+
+	&__input:focus ~ &__icon {
+		color: $primary-color;
+	}
+
+	&__button {
+		position: absolute;
+		top: 50%;
+		left: 5px;
+		transform: translateY(-50%);
+
+		border: none;
+		display: flex;
+		background: transparent;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__icon {
+		width: 1rem;
+		height: 1rem;
+		color: $gray-color;
+	}
+
+	&__list {
+		width: 100%;
+		display: none;
+		opacity: 0;
+		overflow: hidden;
+		transition: opacity 0.2s;
+
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		background: $secondary-color;
+		color: $black-color;
+		border-radius: 1rem;
+	}
+
+	&__wrapper:focus-within + .search__list {
+		display: block;
+		opacity: 1;
+	  }
+
+	&__item {
+		padding: .5rem 2rem;
+
+		transition: all .2s ease-in-out;
+		cursor: pointer;
+
+		&:hover {
+			background: $primary-color;
+			color: $secondary-color;
+		}
+	}
+}
+
+@media (max-width: 640px) {
+  .search {
+    max-width: 100%;
+  }
+}

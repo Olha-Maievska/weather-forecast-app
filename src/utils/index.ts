@@ -1,1 +1,67 @@
+export const allowedCountries = [
+  "GB",
+  "DE",
+  "FR",
+  "IT",
+  "ES",
+  "PL",
+  "UA",
+  "RO",
+  "NL",
+  "BE",
+  "CZ",
+  "GR",
+  "SE",
+  "PT",
+  "HU",
+  "CH",
+  "AT",
+  "BG",
+  "DK",
+  "FI",
+  "NO",
+  "IE",
+  "HR",
+  "SK",
+  "SI",
+  "LT",
+  "LV",
+  "EE",
+  "LU",
+  "IS",
+  "MT",
+  "CY",
+  "US",
+  "CA",
+  "MX",
+  "BR",
+  "AR",
+  "CO",
+  "CL",
+  "PE",
+  "VE",
+  "EC",
+  "UY",
+  "PA",
+  "BO",
+  "CR",
+  "GT",
+  "HN",
+  "PY",
+  "NI",
+  "SV",
+  "JM",
+  "CU",
+  "DO",
+  "GB",
+];
+
 export const formatDateOnly = (date: Date) => date.toISOString().split("T")[0];
+
+export const debounce = (func: (...args: any[]) => void, delay: number) => {
+  let timer: ReturnType<typeof setTimeout>;
+  return (...args: any[]) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => func(...args), delay);
+  };
+};

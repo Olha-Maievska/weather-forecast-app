@@ -1,6 +1,6 @@
-import CurrentWeather from "./components/current-weather";
-import Forecast from './components/forecast';
-import Header from "./components/header";
+import CurrentWeather from "./components/CurrentWeather";
+import Forecast from "./components/Forecast";
+import Header from "./components/Header";
 
 function App() {
   const night = new Date().getHours() >= 18 || new Date().getHours() < 6;
@@ -11,7 +11,7 @@ function App() {
 
       <main className="container">
         <CurrentWeather />
-        <Forecast /> 
+        <Forecast />
       </main>
     </div>
   );
