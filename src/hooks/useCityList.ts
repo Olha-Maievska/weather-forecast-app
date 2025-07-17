@@ -5,7 +5,7 @@ export const useCityList = () => {
   const [cities, setCities] = useState<SearchData[]>([]);
 
   useEffect(() => {
-    fetch("/data/city.list.json")
+    fetch(`${import.meta.env.VITE_CITIES_API!}`)
       .then((res) => res.json())
       .then((data: SearchData[]) => setCities(data))
       .catch((err) => console.error("Failed to load cities:", err));

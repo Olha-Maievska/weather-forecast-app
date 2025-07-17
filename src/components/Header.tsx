@@ -5,9 +5,11 @@ import { DEFAULT_CITY } from "@/const";
 import { useEffect } from "react";
 import { fetchWeatherData } from "@/api/weatherApi";
 import styles from "@/styles/Header.module.scss";
+import { getVideoBgByHour } from "@/utils";
 
 const Header = () => {
   const dispatch = useAppDispatch();
+  const timeOfDay = getVideoBgByHour();
 
   useEffect(() => {
     const loadWeather = async () => {
@@ -39,7 +41,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.header__content}`}>
-        <h2 className={styles.logo}>
+        <h2
+          className={`${styles.logo} ${
+            timeOfDay ? styles.logo__night : ""
+          }`}
+        >
           Weather App
         </h2>
         <Search />

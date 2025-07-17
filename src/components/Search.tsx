@@ -7,7 +7,7 @@ import { debounce } from "../utils";
 import styles from "@/styles/Search.module.scss";
 import { useCityList } from "@/hooks/useCityList";
 import { fetchWeatherData } from "@/api/weatherApi";
-import { allowedCountries } from '@/const/countries';
+import { allowedCountries } from "@/const/countries";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -29,13 +29,17 @@ const Search = () => {
         }
 
         const filtered = allCities
-          .filter((city) => allowedCountries.includes(city.country))
+          .filter((city) => {
+            allowedCountries.includes(city.country);
+          })
           .filter((city) =>
             city.name.toLowerCase().startsWith(value.toLowerCase())
           )
           .slice(0, 5);
 
         setFilteredCities(filtered);
+        console.log(filtered);
+
         setSelectedIndex(0);
       }, 300),
     [allCities]

@@ -6,7 +6,13 @@
   font-weight: bold;
   margin-bottom: 1rem;
 
-  color: $secondary-color;
+  color: #09073e;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+
+  &__night {
+    color: $secondary-color;
+    text-shadow: 0 2px 5px rgba(12, 11, 11, 0.5);
+  }
 }
 
 .header {

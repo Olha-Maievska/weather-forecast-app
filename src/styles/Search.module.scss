@@ -3,7 +3,7 @@
 .search {
   width: 320px;
   position: relative;
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
 
   &__wrapper {
     position: relative;
@@ -13,6 +13,8 @@
     width: 100%;
     padding: 0.6rem 1rem 0.6rem 2rem;
     background: $secondary-color;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
     border: transparent;
     border-radius: 1rem;
 
@@ -65,7 +67,7 @@
 
     background: $secondary-color;
     color: $black-color;
-    border-radius: 1rem;
+    border-radius: 0.3rem;
   }
 
   &__wrapper:focus-within + .search__list {

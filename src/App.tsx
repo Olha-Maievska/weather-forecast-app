@@ -1,13 +1,13 @@
 import CurrentWeather from "./components/CurrentWeather";
 import Forecast from "./components/Forecast";
-import ForecastChart from './components/ForecastChart';
+import ForecastChart from "./components/ForecastChart";
 import Header from "./components/Header";
+import VideoBg from "./components/VideoBg";
 
 function App() {
-  const night = new Date().getHours() >= 18 || new Date().getHours() < 6;
-
   return (
-    <div className={`app app__${night ? "night" : "day"}`}>
+    <div className="app">
+      <VideoBg />
       <Header />
 
       <main className="container">

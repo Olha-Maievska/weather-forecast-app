@@ -1,12 +1,13 @@
 import { useAppSelector } from "@/hooks";
 import type { ForecastItem } from "@/interfaces/forecast.interface";
-import { browserLang, capitalizeFirstLetter, formatDateOnly } from "@/utils";
+import { browserLang, capitalizeFirstLetter, formatDateOnly, getVideoBgByHour } from "@/utils";
 import styles from "@/styles/Forecast.module.scss";
 import { dayTranslations } from "@/const/countries";
 import { DropletIcon, Wind } from "lucide-react";
 
 const Forecast = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
+  const timeOfDay = getVideoBgByHour();
 
   if (!forecastData || !forecastData.list || forecastData.list.length === 0) {
     return null;
@@ -75,7 +76,7 @@ const Forecast = () => {
     });
 
   return (
-    <table className={styles.forecast}>
+    <table className={`${styles.forecast} ${timeOfDay ? styles.forecast__night : ''}`}>
       <tbody>
         {dailyForecast.map((item) => (
           <tr key={item.dt} className={styles.forecast__row}>

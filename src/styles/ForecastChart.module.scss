@@ -1,9 +1,15 @@
 @use "./variables.scss" as *;
 
 .chart {
-  padding: 1.5rem 1.5rem 1rem 0; 
+  padding: 1.5rem 1.5rem 1rem 0;
 
-  background: rgba(255, 255, 255, 0.8);
+  background: $secondary-color;
+  color: $black-color;
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+  &__night {
+    background: rgba(74, 82, 102, 0.5);
+    color: $secondary-color;
+  }
 }

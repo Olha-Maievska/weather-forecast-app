@@ -1,11 +1,13 @@
 import { useAppSelector } from "@/hooks";
 import styles from "@/styles/CurrentWeather.module.scss";
+import { getVideoBgByHour } from '@/utils';
 import { MapPin } from "lucide-react";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(
     (state) => state.weather.currentWeather
   );
+  const timeOfDay = getVideoBgByHour();
 
   if (!currentWeather) {
     return null;
@@ -17,7 +19,11 @@ const CurrentWeather = () => {
   const desc = currentWeather.weather[0].description || "No description";
 
   return (
-    <div className={styles.weather}>
+    <div
+      className={`${styles.weather} ${
+        timeOfDay ? styles.weather__night : ""
+      }`}
+    >
       <div className={styles.weather__top}>
         <p className={styles.weather__city}>
           <span>
