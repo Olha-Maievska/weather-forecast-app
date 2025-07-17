@@ -3,7 +3,6 @@ import Forecast from "./components/Forecast";
 import ForecastChart from './components/ForecastChart';
 import Header from "./components/Header";
 
-
 function App() {
   const night = new Date().getHours() >= 18 || new Date().getHours() < 6;
 
