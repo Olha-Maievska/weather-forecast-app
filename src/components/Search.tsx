@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
-import type { SearchData } from "../interfaces/search.interface";
+import type { SearchData } from "@/interfaces/search.interface";
 import { SearchIcon } from "lucide-react";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch } from "@/hooks";
 import { setForecastData, setWeatherData } from "../store/weatherSlice";
 import { allowedCountries, debounce } from "../utils";
-import styles from "../styles/Search.module.scss";
-import { useCityList } from "../hooks/useCityList";
-import { fetchWeatherData } from "../api/weatherApi";
+import styles from "@/styles/Search.module.scss";
+import { useCityList } from "@/hooks/useCityList";
+import { fetchWeatherData } from "@/api/weatherApi";
 
 const Search = () => {
   const [query, setQuery] = useState("");

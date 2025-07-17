@@ -1,5 +1,5 @@
-import { useAppSelector } from "../hooks";
-import styles from "../styles/CurrentWeather.module.scss";
+import { useAppSelector } from "@/hooks";
+import styles from "@/styles/CurrentWeather.module.scss";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(

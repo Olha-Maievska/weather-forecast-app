@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { WeatherData } from '../interfaces/weather.interface';
-import type { ForecastData } from '../interfaces/forecast.interface';
+import type { WeatherData } from '@/interfaces/weather.interface';
+import type { ForecastData } from '@/interfaces/forecast.interface';
 
 interface WeatherState {
   currentWeather: WeatherData | null;

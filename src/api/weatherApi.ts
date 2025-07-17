@@ -1,5 +1,5 @@
-import type { WeatherData } from "../interfaces/weather.interface";
-import type { ForecastData } from "../interfaces/forecast.interface";
+import type { WeatherData } from "@/interfaces/weather.interface";
+import type { ForecastData } from "@/interfaces/forecast.interface";
 
 export const apiKey = import.meta.env.VITE_WEATHER_API_KEY!;
 export const apiUrl = import.meta.env.VITE_WEATHER_API_URL!;

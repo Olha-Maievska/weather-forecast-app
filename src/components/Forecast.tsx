@@ -1,7 +1,7 @@
-import { useAppSelector } from "../hooks";
-import type { ForecastItem } from "../interfaces/forecast.interface";
-import { formatDateOnly } from "../utils";
-import styles from "../styles/Forecast.module.scss";
+import { useAppSelector } from "@/hooks";
+import type { ForecastItem } from "@/interfaces/forecast.interface";
+import { formatDateOnly } from "@/utils";
+import styles from "@/styles/Forecast.module.scss";
 
 const weekdays = [
   "Neděle",

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { SearchData } from "../interfaces/search.interface";
+import type { SearchData } from "@/interfaces/search.interface";
 
 export const useCityList = () => {
   const [cities, setCities] = useState<SearchData[]>([]);
