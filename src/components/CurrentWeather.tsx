@@ -9,20 +9,14 @@ const CurrentWeather = () => {
   );
   const timeOfDay = getTimeOfDay();
 
-  if (!currentWeather) {
-    return null;
-  }
-
-  const cityName = currentWeather.name || "No name";
-  const icon = currentWeather.weather[0].icon || "unknown";
-  const temp = Math.round(currentWeather.main.temp || 0) || "N/A";
-  const desc = currentWeather.weather[0].description || "No description";
+  const cityName = currentWeather?.name;
+  const icon = currentWeather?.weather[0].icon;
+  const temp = Math.round(currentWeather?.main.temp || 0);
+  const desc = currentWeather?.weather[0].description;
 
   return (
     <div
-      className={`${styles.weather} ${
-        timeOfDay ? styles.weather__night : ""
-      }`}
+      className={`${styles.weather} ${timeOfDay ? styles.weather__night : ""}`}
     >
       <div className={styles.weather__top}>
         <p className={styles.weather__city}>

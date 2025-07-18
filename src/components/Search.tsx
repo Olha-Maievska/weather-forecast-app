@@ -55,11 +55,15 @@ const Search = () => {
       <form className={styles.search__wrapper} onSubmit={handleSubmit}>
         <input
           className={styles.search__input}
-          value={query}
           ref={inputRef}
+          value={query}
+          placeholder={placeholder}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={placeholder}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
         />
         <button className={styles.search__button} type="submit">
           <SearchIcon className={styles.search__icon} />
