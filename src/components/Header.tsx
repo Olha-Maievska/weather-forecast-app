@@ -4,8 +4,8 @@ import { useAppDispatch } from "@/hooks";
 import { DEFAULT_CITY } from "@/const";
 import { useEffect } from "react";
 import { fetchWeatherData } from "@/api/weatherApi";
-import styles from "@/styles/Header.module.scss";
 import { getTimeOfDay } from "@/utils";
+import styles from "@/styles/Header.module.scss";
 
 const Header = () => {
   const dispatch = useAppDispatch();

@@ -15,23 +15,12 @@ interface Main {
   feels_like: number;
   temp_min: number;
   temp_max: number;
-  pressure: number;
   humidity: number;
-  sea_level?: number;
-  grnd_level?: number;
 }
 
 interface Wind {
   speed: number;
   deg: number;
-}
-
-interface Sys {
-  type: number;
-  id: number;
-  country: string;
-  sunrise: number;
-  sunset: number;
 }
 
 export interface WeatherData {
@@ -40,10 +29,8 @@ export interface WeatherData {
   weather: Weather[];
   base: string;
   main: Main;
-  visibility: number;
   wind: Wind;
   dt: number;
-  sys: Sys;
   timezone: number;
   id: number;
   name: string;

@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/hooks";
-import styles from "@/styles/CurrentWeather.module.scss";
 import { getTimeOfDay } from "@/utils";
 import { MapPin } from "lucide-react";
+import styles from "@/styles/CurrentWeather.module.scss";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(
@@ -35,7 +35,7 @@ const CurrentWeather = () => {
           <span>{temp}°C</span>
           <img
             className={styles.weather__icon}
-            src={`images/icons/${icon}.png`}
+            src={`icons/${icon}.png`}
             alt={desc}
           />
         </p>

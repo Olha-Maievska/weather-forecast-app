@@ -10,10 +10,7 @@ export interface List {
   dt: number;
   main: Main;
   weather: Weather[];
-  clouds: Clouds;
   wind: Wind;
-  visibility: number;
-  pop: number;
   dt_txt: string;
   rain?: Rain;
 }
@@ -32,10 +29,6 @@ export interface Weather {
   main: string;
   description: string;
   icon: string;
-}
-
-export interface Clouds {
-  all: number;
 }
 
 export interface Wind {

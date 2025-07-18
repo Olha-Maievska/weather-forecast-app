@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import { SearchIcon } from "lucide-react";
-import styles from "@/styles/Search.module.scss";
 import { useCityList } from "@/hooks/useCityList";
 import { useCitySearch } from '@/hooks/useCitySearch';
 import { useWeatherFetcher } from '@/hooks/useWeatherFetcher';
+import styles from "@/styles/Search.module.scss";
 
 const Search = () => {
   const [query, setQuery] = useState("");

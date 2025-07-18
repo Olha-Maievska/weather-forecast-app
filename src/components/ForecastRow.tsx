@@ -1,5 +1,5 @@
-import styles from "@/styles/Forecast.module.scss";
 import { DropletIcon, Wind } from "lucide-react";
+import styles from "@/styles/Forecast.module.scss";
 
 interface ForecastRowProps {
   dt: number;
@@ -32,7 +32,7 @@ const ForecastRow = ({
       <td className={styles.forecast__weather}>
         <img
           className={styles.forecast__icon}
-          src={`images/icons/${icon}.png`}
+          src={`icons/${icon}.png`}
           alt={description}
         />
       </td>
