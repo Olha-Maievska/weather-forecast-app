@@ -1,52 +1,20 @@
-# React + TypeScript + Vite
+# 🌤️ Weather App
+A Single Page Application (SPA) built with React, Redux Toolkit, Redux-Saga, TypeScript, and Recharts. It allows users to search for a city (in English), view the current weather, a 5-day forecast, and a temperature chart.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 💡 Usage Notes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+City names must be typed in English.
 
-## Expanding the ESLint configuration
+Only cities from a predefined list of countries are allowed.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Selecting a city loads the current weather, 5-day forecast, and chart.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+If no city is found, a “No cities found” message is shown.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Includes a loader and dynamic video background based on time of day.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-<<<<<<< HEAD
 ---
 
 ## 🔧 Tech Stack
@@ -61,7 +29,32 @@ import reactDom from 'eslint-plugin-react-dom'
 
 ---
 
-## 📁 Project Structure
+## 🗂 Project Structure
+src/ directory contains:
+
+    api/ – Functions to interact with the OpenWeatherMap API.
+
+    assets/ – Static files like images and background videos.
+
+    components/ – Reusable UI components: Header, Footer, Forecast, CurrentWeather, ForecastChart, etc.
+
+    const/ – Constants used across the app, such as allowed countries.
+
+    features/ – Redux Toolkit slices and saga files for weather state management.
+
+    hooks/ – Custom React hooks, e.g. for city list, search debounce, weather fetcher.
+
+    interfaces/ – TypeScript interfaces and types for weather and forecast data.
+
+    styles/ – SCSS module styles for components and layout.
+
+    utils/ – Utility functions like debounce, video background helpers.
+
+    App.tsx – Main app component that brings everything together.
+
+    main.tsx – Entry point of the React application.
+
+---
 
 ## 🚀 Getting Started
 
@@ -83,8 +76,9 @@ VITE_OPENWEATHER_API_KEY=your_api_key_here
 
 npm run dev
 
+---
 
-# 🌍 Browser Support
+## 🌍 Browser Support
 The application supports the latest versions of:
 
 Google Chrome
@@ -93,30 +87,7 @@ Mozilla Firefox
 
 Microsoft Edge
 
+---
+
 ## 🧪 Notes
 This app was developed as a technical test project.
-
-Feel free to fork or reuse for your own learning.
-=======
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
->>>>>>> 874feb3 (feat: add README.md)
