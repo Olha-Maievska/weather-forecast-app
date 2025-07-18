@@ -1,22 +1,19 @@
 import { useAppSelector } from "@/hooks";
-import { getTimeOfDay } from "@/utils";
 import { useDailyForecast } from "@/hooks/useDailyForecast";
 import ForecastRow from "./ForecastRow";
 import styles from "@/styles/Forecast.module.scss";
+import { IS_NIGHT } from "@/const";
 
 const Forecast = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
   const forecastList = forecastData?.list ?? [];
-  const timeOfDay = getTimeOfDay();
   const dailyForecast = useDailyForecast(forecastList);
 
   if (!forecastList.length || !dailyForecast.length) return null;
 
   return (
     <table
-      className={`${styles.forecast} ${
-        timeOfDay ? styles.forecast__night : ""
-      }`}
+      className={`${styles.forecast} ${IS_NIGHT ? styles.forecast__night : ""}`}
     >
       <tbody>
         {dailyForecast.map((item) => (

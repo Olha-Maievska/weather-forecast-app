@@ -1,13 +1,12 @@
 import { useAppSelector } from "@/hooks";
-import { getTimeOfDay } from "@/utils";
 import { MapPin } from "lucide-react";
 import styles from "@/styles/CurrentWeather.module.scss";
+import { IS_NIGHT } from "@/const";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(
     (state) => state.weather.currentWeather
   );
-  const timeOfDay = getTimeOfDay();
 
   const cityName = currentWeather?.name;
   const icon = currentWeather?.weather[0].icon;
@@ -16,7 +15,9 @@ const CurrentWeather = () => {
 
   return (
     <div
-      className={`${styles.weather} ${timeOfDay ? styles.weather__night : ""}`}
+      className={`${styles.weather} ${
+        IS_NIGHT ? styles.weather__night : styles.weather__day
+      }`}
     >
       <div className={styles.weather__top}>
         <p className={styles.weather__city}>

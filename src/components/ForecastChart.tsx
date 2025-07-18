@@ -8,13 +8,12 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { getTimeOfDay } from "@/utils";
 import { getGroupedForecast } from "@/utils/getGroupedForecast";
 import styles from "@/styles/ForecastChart.module.scss";
+import { IS_NIGHT } from "@/const";
 
 const ForecastChart = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
-  const timeOfDay = getTimeOfDay();
 
   if (!forecastData || !forecastData.list || forecastData.list.length === 0) {
     return null;
@@ -25,17 +24,15 @@ const ForecastChart = () => {
 
   return (
     forecastData && (
-      <div
-        className={`${styles.chart} ${timeOfDay ? styles.chart__night : ""}`}
-      >
+      <div className={`${styles.chart} ${IS_NIGHT ? styles.chart__night : ""}`}>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="time"
-              tick={{ fill: timeOfDay ? "#e2d6d6" : "#333" }}
+              tick={{ fill: IS_NIGHT ? "#e2d6d6" : "#333" }}
             />
-            <YAxis unit="°C" tick={{ fill: timeOfDay ? "#e2d6d6" : "#333" }} />
+            <YAxis unit="°C" tick={{ fill: IS_NIGHT ? "#e2d6d6" : "#333" }} />
             <Tooltip />
             <Line
               type="monotone"

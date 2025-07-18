@@ -4,15 +4,13 @@ import {
   setWeatherData,
 } from "@/features/weather/weatherSlice";
 import { useAppDispatch } from "@/hooks";
-import { DEFAULT_CITY } from "@/const";
+import { DEFAULT_CITY, IS_NIGHT } from "@/const";
 import { useEffect } from "react";
 import { fetchWeatherData } from "@/api/weatherApi";
-import { getTimeOfDay } from "@/utils";
 import styles from "@/styles/Header.module.scss";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const timeOfDay = getTimeOfDay();
 
   useEffect(() => {
     const loadWeather = async () => {
@@ -44,7 +42,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.header__content}`}>
-        <h2 className={`${styles.logo} ${timeOfDay ? styles.logo__night : ""}`}>
+        <h2 className={`${styles.logo} ${IS_NIGHT ? styles.logo__night : ""}`}>
           Weather App
         </h2>
         <Search />
