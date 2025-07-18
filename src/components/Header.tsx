@@ -1,5 +1,8 @@
 import Search from "./Search";
-import { setForecastData, setWeatherData } from "@/store/weatherSlice";
+import {
+  setForecastData,
+  setWeatherData,
+} from "@/features/weather/weatherSlice";
 import { useAppDispatch } from "@/hooks";
 import { DEFAULT_CITY } from "@/const";
 import { useEffect } from "react";
@@ -41,11 +44,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.header__content}`}>
-        <h2
-          className={`${styles.logo} ${
-            timeOfDay ? styles.logo__night : ""
-          }`}
-        >
+        <h2 className={`${styles.logo} ${timeOfDay ? styles.logo__night : ""}`}>
           Weather App
         </h2>
         <Search />

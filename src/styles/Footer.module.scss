@@ -1,0 +1,18 @@
+@use "./variables.scss" as *;
+
+.footer {
+	margin-top: 4rem;
+	background: $primary-color;
+	padding: 1rem;
+	color: $secondary-color;
+	text-align: center;
+
+	&__text {
+		font-size: 0.8rem;
+
+		& a {
+			font-weight: 800;
+			color: #000;
+		}
+	}
+}

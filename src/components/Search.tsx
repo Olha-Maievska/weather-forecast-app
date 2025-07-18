@@ -8,7 +8,7 @@ import styles from "@/styles/Search.module.scss";
 const Search = () => {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [placeholder, setPlaceholder] = useState("Search for a city...");
+  const [placeholder, setPlaceholder] = useState<string>("Search for a city...");
 
   const allCities = useCityList();
   const filteredCities = useCitySearch(query, allCities);

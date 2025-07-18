@@ -8,7 +8,7 @@
 
 body {
   min-width: 320px;
-  min-height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -54,8 +54,20 @@ a {
 
 .app {
   width: 100%;
+  padding-top: 2rem;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  padding: 2rem 0 4rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 640px) {

@@ -1,15 +1,12 @@
 import { useAppDispatch } from "@/hooks";
-import { setForecastData, setWeatherData } from "@/store/weatherSlice";
-import { fetchWeatherData } from "@/api/weatherApi";
+import { fetchWeatherRequest } from "@/features/weather";
 
 export const useWeatherFetcher = () => {
   const dispatch = useAppDispatch();
 
-  const fetchWeather = async (cityName: string) => {
-    const { weather, forecast } = await fetchWeatherData(cityName);
-    dispatch(setWeatherData(weather));
-    dispatch(setForecastData(forecast));
-    return weather.name;
+  const fetchWeather = (cityName: string): string => {
+    dispatch(fetchWeatherRequest(cityName));
+    return cityName;
   };
 
   return fetchWeather;
