@@ -60,7 +60,7 @@ src/ directory contains:
 
 1. **Clone the repository**
 
-git clone https://github.com/your-username/weather-app.git
+git clone https://github.com/Olha-Maievska/weather-forecast-app
 cd weather-app
 
 2. **Install dependencies**
@@ -70,6 +70,7 @@ npm install
 3. **Create an .env file**
 
 VITE_OPENWEATHER_API_KEY=your_api_key_here
+
 🔑 You can get a free API key at https://openweathermap.org/api
 
 4. **Run the development server**
