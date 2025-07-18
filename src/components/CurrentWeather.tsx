@@ -1,7 +1,7 @@
 import { useAppSelector } from "@/hooks";
 import { MapPin } from "lucide-react";
-import styles from "@/styles/CurrentWeather.module.scss";
 import { IS_NIGHT } from "@/const";
+import styles from "@/styles/CurrentWeather.module.scss";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(

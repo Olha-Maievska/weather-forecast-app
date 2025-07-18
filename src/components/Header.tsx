@@ -43,7 +43,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={`container ${styles.header__content}`}>
         <h2 className={`${styles.logo} ${IS_NIGHT ? styles.logo__night : ""}`}>
-          Weather App
+          Weather Forecast
         </h2>
         <Search />
       </div>

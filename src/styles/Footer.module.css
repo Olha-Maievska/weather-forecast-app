@@ -1,0 +1,20 @@
+.footer {
+  margin-top: 4rem;
+  background: #3478d0;
+  padding: 1rem;
+  color: #e9dcdc;
+  text-align: center;
+}
+.footer__text {
+  font-size: 0.8rem;
+}
+.footer__text a {
+  font-weight: 800;
+  color: #e8a553;
+}
+
+@media (max-width: 480px) {
+  .footer__text a {
+    display: block;
+  }
+}/*# sourceMappingURL=Footer.module.css.map */

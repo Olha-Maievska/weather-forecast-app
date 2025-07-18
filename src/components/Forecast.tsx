@@ -1,8 +1,8 @@
 import { useAppSelector } from "@/hooks";
 import { useDailyForecast } from "@/hooks/useDailyForecast";
 import ForecastRow from "./ForecastRow";
-import styles from "@/styles/Forecast.module.scss";
 import { IS_NIGHT } from "@/const";
+import styles from "@/styles/Forecast.module.scss";
 
 const Forecast = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);

@@ -1,0 +1,1 @@
+{"version":3,"sources":["Loader.module.scss","Loader.module.css","variables.scss"],"names":[],"mappings":"AAEA;EACE,kBAAA;EACA,MAAA;EACA,OAAA;EAEA,WAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,aAAA;ACFF;ADIE;EACE,kCAAA;EACA,aAAA;EACA,cAAA;EACA,iBAAA;EACA,cElBc;ADgBlB;;ADMA;EACE;IACE,uBAAA;ECHF;EDKA;IACE,yBAAA;ECHF;AACF","file":"Loader.module.css"}

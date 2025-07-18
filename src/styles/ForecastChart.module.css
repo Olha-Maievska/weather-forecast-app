@@ -1,0 +1,17 @@
+.chart {
+  padding: 1.5rem 1.5rem 1rem 0;
+  background: #e9dcdc;
+  color: #333;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.chart__night {
+  background: rgba(74, 82, 102, 0.5);
+  color: #e9dcdc;
+}
+
+@media (max-width: 640px) {
+  .chart {
+    padding: 0;
+  }
+}/*# sourceMappingURL=ForecastChart.module.css.map */

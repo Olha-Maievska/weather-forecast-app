@@ -9,8 +9,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getGroupedForecast } from "@/utils/getGroupedForecast";
-import styles from "@/styles/ForecastChart.module.scss";
 import { IS_NIGHT } from "@/const";
+import styles from "@/styles/ForecastChart.module.scss";
 
 const ForecastChart = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
