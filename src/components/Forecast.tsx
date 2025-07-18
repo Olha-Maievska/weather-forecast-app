@@ -1,8 +1,8 @@
 import { useAppSelector } from "@/hooks";
 import { getVideoBgByHour } from "@/utils";
-import styles from "@/styles/Forecast.module.scss";
-import { DropletIcon, Wind } from "lucide-react";
 import { useDailyForecast } from "@/hooks/useDailyForecast";
+import ForecastRow from "./ForecastRow";
+import styles from "@/styles/Forecast.module.scss";
 
 const Forecast = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
@@ -20,28 +20,18 @@ const Forecast = () => {
     >
       <tbody>
         {dailyForecast.map((item) => (
-          <tr key={item.dt} className={styles.forecast__row}>
-            <td className={styles.forecast__day}>
-              {item.dayName} <span>{item.dateLabel}</span>
-            </td>
-            <td className={styles.forecast__weather}>
-              <img
-                className={styles.forecast__icon}
-                src={`images/icons/${item.icon}.png`}
-                alt={item.description}
-              />
-            </td>
-            <td className={styles.forecast__min}>{item.tempMin}°C</td>
-            <td className={styles.forecast__max}>{item.tempMax}°C</td>
-            <td className={styles.forecast__detais}>
-              <DropletIcon className={styles.forecast__detais__icon} />
-              {item.humidity} %
-            </td>
-            <td className={styles.forecast__detais}>
-              <Wind className={styles.forecast__detais__icon} />
-              {item.windSpeed.toFixed(1)} m/s
-            </td>
-          </tr>
+          <ForecastRow
+            key={item.dt}
+            dt={item.dt}
+            dayName={item.dayName}
+            dateLabel={item.dateLabel}
+            icon={item.icon}
+            description={item.description}
+            tempMin={item.tempMin}
+            tempMax={item.tempMax}
+            humidity={item.humidity}
+            windSpeed={item.windSpeed}
+          />
         ))}
       </tbody>
     </table>
