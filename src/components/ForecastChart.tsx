@@ -24,7 +24,9 @@ const ForecastChart = () => {
 
   return (
     forecastData && (
-      <div className={`${styles.chart} ${IS_NIGHT ? styles.chart__night : ""}`}>
+      <div
+        className={`${styles.chart} ${IS_NIGHT ? styles.chart__night : ""}`}
+      >
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />

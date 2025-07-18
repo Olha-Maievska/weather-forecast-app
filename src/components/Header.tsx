@@ -42,7 +42,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.header__content}`}>
-        <h2 className={`${styles.logo} ${IS_NIGHT ? styles.logo__night : ""}`}>
+        <h2
+          className={`${styles.logo} ${IS_NIGHT ? styles.logo__night : ""}`}
+          aria-label="Weather Forecast Application"
+          tabIndex={0}
+        >
           Weather Forecast
         </h2>
         <Search />

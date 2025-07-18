@@ -26,24 +26,43 @@ const ForecastRow = ({
 }: ForecastRowProps) => {
   return (
     <tr key={dt} className={styles.forecast__row}>
-      <td className={styles.forecast__day}>
+      <td className={styles.forecast__day} tabIndex={0}>
         {dayName} <span>{dateLabel}</span>
       </td>
-      <td className={styles.forecast__weather}>
+      <td className={styles.forecast__weather} tabIndex={0}>
         <img
           className={styles.forecast__icon}
           src={`icons/${icon}.png`}
           alt={description}
         />
       </td>
-      <td className={styles.forecast__min}>{tempMin}°C</td>
-      <td className={styles.forecast__max}>{tempMax}°C</td>
-      <td className={styles.forecast__detais}>
-        <DropletIcon className={styles.forecast__detais__icon} />
+      <td
+        className={styles.forecast__min}
+        tabIndex={0}
+        aria-label="Minimum temperature"
+      >
+        {tempMin}°C
+      </td>
+      <td
+        className={styles.forecast__max}
+        tabIndex={0}
+        aria-label="Maximum temperature"
+      >
+        {tempMax}°C
+      </td>
+      <td
+        className={styles.forecast__detais}
+        tabIndex={0}
+        aria-label="Humidity"
+      >
+        <DropletIcon
+          className={styles.forecast__detais__icon}
+          aria-hidden="true"
+        />
         {humidity} %
       </td>
-      <td className={styles.forecast__detais}>
-        <Wind className={styles.forecast__detais__icon} />
+      <td className={styles.forecast__detais} tabIndex={0} aria-label="Wind">
+        <Wind className={styles.forecast__detais__icon} aria-hidden="true" />
         {windSpeed.toFixed(1)} m/s
       </td>
     </tr>
