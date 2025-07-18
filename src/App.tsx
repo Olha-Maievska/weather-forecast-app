@@ -1,7 +1,7 @@
 import CurrentWeather from "./components/CurrentWeather";
 import Footer from './components/Footer';
 import Forecast from "./components/Forecast";
-import ForecastChart from "./components/ForecastChart";
+import ForecastChart from "./components/ForecastChart";   
 import Header from "./components/Header";
 import VideoBg from "./components/VideoBg";
 

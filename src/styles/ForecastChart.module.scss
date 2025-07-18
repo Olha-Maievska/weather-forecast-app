@@ -13,3 +13,9 @@
     color: $secondary-color;
   }
 }
+
+@media (max-width: 640px) {
+  .chart {
+    padding: 0;
+  }
+}

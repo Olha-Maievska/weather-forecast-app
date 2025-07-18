@@ -71,3 +71,17 @@
     color: $gray-color;
   }
 }
+
+@media (max-width: 640px) {
+  .forecast {
+    padding: 0 0.5rem;
+    &__row {
+      display: grid;
+      grid-template-columns: 90px repeat(3, 1fr);
+      padding: 0.5rem 0;
+    }
+    &__detais {
+      display: none;
+    }
+  }
+}
