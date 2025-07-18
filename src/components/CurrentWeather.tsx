@@ -1,13 +1,13 @@
 import { useAppSelector } from "@/hooks";
 import styles from "@/styles/CurrentWeather.module.scss";
-import { getVideoBgByHour } from '@/utils';
+import { getTimeOfDay } from "@/utils";
 import { MapPin } from "lucide-react";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(
     (state) => state.weather.currentWeather
   );
-  const timeOfDay = getVideoBgByHour();
+  const timeOfDay = getTimeOfDay();
 
   if (!currentWeather) {
     return null;

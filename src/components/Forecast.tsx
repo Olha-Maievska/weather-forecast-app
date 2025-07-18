@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/hooks";
-import { getVideoBgByHour } from "@/utils";
+import { getTimeOfDay } from "@/utils";
 import { useDailyForecast } from "@/hooks/useDailyForecast";
 import ForecastRow from "./ForecastRow";
 import styles from "@/styles/Forecast.module.scss";
@@ -7,7 +7,7 @@ import styles from "@/styles/Forecast.module.scss";
 const Forecast = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
   const forecastList = forecastData?.list ?? [];
-  const timeOfDay = getVideoBgByHour();
+  const timeOfDay = getTimeOfDay();
   const dailyForecast = useDailyForecast(forecastList);
 
   if (!forecastList.length || !dailyForecast.length) return null;

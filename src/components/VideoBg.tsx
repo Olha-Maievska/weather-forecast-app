@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { VIDEO_BACKGROUNDS } from "@/const/videoSrc";
-import { getVideoBgByHour } from "@/utils";
+import { getTimeOfDay } from "@/utils";
 import styles from "@/styles/VideoBg.module.scss";
 
 const VideoBg = () => {
@@ -8,7 +8,7 @@ const VideoBg = () => {
   const [prevSrc, setPrevSrc] = useState<string | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const timeOfDay = getVideoBgByHour();
+  const timeOfDay = getTimeOfDay();
   const { day, evening, night } = VIDEO_BACKGROUNDS;
 
   const newSrc =

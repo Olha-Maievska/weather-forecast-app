@@ -23,7 +23,7 @@ export function capitalizeFirstLetter(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export const getVideoBgByHour = (): string => {
+export const getTimeOfDay = (): string => {
   const hour = new Date().getHours();
 
   if (hour >= 18 && hour < 22) return "evening";

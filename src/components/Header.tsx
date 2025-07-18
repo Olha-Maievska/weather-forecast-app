@@ -5,11 +5,11 @@ import { DEFAULT_CITY } from "@/const";
 import { useEffect } from "react";
 import { fetchWeatherData } from "@/api/weatherApi";
 import styles from "@/styles/Header.module.scss";
-import { getVideoBgByHour } from "@/utils";
+import { getTimeOfDay } from "@/utils";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const timeOfDay = getVideoBgByHour();
+  const timeOfDay = getTimeOfDay();
 
   useEffect(() => {
     const loadWeather = async () => {
