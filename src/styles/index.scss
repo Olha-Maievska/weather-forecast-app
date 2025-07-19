@@ -59,11 +59,9 @@ main {
 
 .app {
   width: 100%;
-  padding-top: 2rem;
-
-  display: grid;
-  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+
+  padding-top: 2rem;
 }
 
 @keyframes spin {

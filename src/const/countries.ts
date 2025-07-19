@@ -9,7 +9,6 @@ export const allowedCountries = [
   "NL",
   "BE",
   "CZ",
-  "GR",
   "SE",
   "PT",
   "HU",

@@ -44,9 +44,17 @@
     }
   }
 
+  &__night &__day span {
+    color: #c5c3bd;
+  }
+
   &__min {
     font-weight: 700;
     color: $primary-color;
+  }
+
+  &__night &__min {
+    color: #7bb4ff;
   }
 
   &__max {
@@ -77,6 +85,11 @@
 
     color: $gray-color;
   }
+
+    &__night &__detais__icon {
+    color: #c5c3bd;
+  }
+
 }
 
 @media (max-width: 640px) {

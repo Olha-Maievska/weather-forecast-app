@@ -1,8 +1,8 @@
 import { useAppSelector } from "@/hooks";
 import { MapPin } from "lucide-react";
 import { IS_NIGHT } from "@/const";
-import styles from "@/styles/CurrentWeather.module.scss";
 import { useEffect, useState } from "react";
+import styles from "@/styles/CurrentWeather.module.scss";
 
 const CurrentWeather = () => {
   const currentWeather = useAppSelector(
@@ -12,7 +12,7 @@ const CurrentWeather = () => {
   const [visible, setVisible] = useState(false);
 
   const cityName = currentWeather?.name;
-  const icon = currentWeather?.weather[0].icon;
+  const icon = currentWeather?.weather[0].icon || "unknown";
   const temp = Math.round(currentWeather?.main.temp || 0);
   const desc = currentWeather?.weather[0].description;
 
@@ -30,9 +30,9 @@ const CurrentWeather = () => {
 
   return (
     <div
-      className={`${styles.weather} ${
-        IS_NIGHT ? styles.weather__night : styles.weather__day
-      } ${visible ? styles.weather__show : ""}`}
+      className={`${styles.weather} ${IS_NIGHT ? styles.weather__night : ""} ${
+        visible ? styles.weather__show : ""
+      }`}
       tabIndex={0}
       aria-label={`Weather in ${cityName}. ${temp} degrees Celsius. ${desc}`}
     >

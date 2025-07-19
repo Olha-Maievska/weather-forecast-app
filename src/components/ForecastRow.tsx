@@ -17,7 +17,7 @@ const ForecastRow = ({
   dt,
   dayName,
   dateLabel,
-  icon,
+  icon = "unknown",
   description,
   tempMin,
   tempMax,

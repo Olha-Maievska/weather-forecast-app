@@ -7,20 +7,21 @@ const VideoBg = () => {
   const { day, evening, night } = VIDEO_BACKGROUNDS;
 
   const src =
-    timeOfDay === "day" ? day : timeOfDay === "evening" ? evening : night;
+    timeOfDay === "night" ? night : timeOfDay === "evening" ? evening : day;
 
   return (
     <div className={styles.videoWrapper}>
       <video
         className={styles.video}
-        src={src}
         loop
         autoPlay
         muted
         playsInline
         preload="lazy"
-        poster={`/images/${timeOfDay}-bg.webp`}
-      />
+      >
+        <source src={src} type="video/mp4" />
+        <img src={`/images/${timeOfDay}-bg.webp`} alt="Background image" />
+      </video>
     </div>
   );
 };
