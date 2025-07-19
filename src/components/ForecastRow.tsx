@@ -32,7 +32,8 @@ const ForecastRow = ({
       <td className={styles.forecast__weather} tabIndex={0}>
         <img
           className={styles.forecast__icon}
-          src={`icons/${icon}.png`}
+          src={`/images/icons/${icon}.png`}
+          loading="lazy"
           alt={description}
         />
       </td>

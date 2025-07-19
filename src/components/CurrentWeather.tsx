@@ -47,8 +47,9 @@ const CurrentWeather = () => {
           <span>{temp}°C</span>
           <img
             className={styles.weather__icon}
-            src={`icons/${icon}.png`}
+            src={`/images/icons/${icon}.png`}
             alt={desc}
+            loading="lazy"
             aria-hidden="true"
           />
         </p>

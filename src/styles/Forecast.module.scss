@@ -40,7 +40,7 @@
     & span {
       display: block;
       font-size: 0.8rem;
-      opacity: 0.6;
+      color: $gray-color;
     }
   }
 
@@ -51,7 +51,7 @@
 
   &__max {
     font-weight: 700;
-    color: #ff4500;
+    color: #d03800;
   }
 
   &__icon {

@@ -8,7 +8,7 @@ import VideoBg from "./components/VideoBg";
 import { useAppSelector } from "./hooks";
 
 function App() {
-  const { forecast, currentWeather, loading } = useAppSelector(
+  const { loading } = useAppSelector(
     (state) => state.weather
   );
 
@@ -18,16 +18,8 @@ function App() {
       <Header />
 
       <main className="container">
-        {currentWeather && !loading ? (
-          <CurrentWeather />
-        ) : (
-          <div style={{ minHeight: "175px" }} />
-        )}
-        {forecast && !loading ? (
-          <Forecast />
-        ) : (
-          <div style={{ minHeight: "360px" }} />
-        )}
+        <CurrentWeather />
+        <Forecast />
         <ForecastChart />
       </main>
 
