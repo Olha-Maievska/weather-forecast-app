@@ -62,6 +62,9 @@ main {
   min-height: 100vh;
 
   padding-top: 2rem;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 @keyframes spin {

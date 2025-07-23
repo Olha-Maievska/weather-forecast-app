@@ -32,9 +32,12 @@ export const useDailyForecast = (forecastList: ForecastItem[]) => {
         curr.main.temp > prev.main.temp ? curr : prev
       );
 
-      const temps = items.map((i) => i.main.temp);
-      const tempMax = Math.round(Math.max(...temps));
-      const tempMin = Math.round(Math.min(...temps));
+      const tempMax = Math.round(
+        Math.max(...items.map((i) => i.main.temp_max))
+      );
+      const tempMin = Math.round(
+        Math.min(...items.map((i) => i.main.temp_min))
+      );
       const date = new Date(maxItem.dt * 1000);
 
       let dayName = "";

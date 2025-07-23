@@ -15,7 +15,7 @@ import styles from "@/styles/ForecastChart.module.scss";
 const ForecastChart = () => {
   const forecastData = useAppSelector((state) => state.weather.forecast);
 
-  if (!forecastData || !forecastData.list || forecastData.list.length === 0) {
+  if (!forecastData || !forecastData.list.length) {
     return null;
   }
 
@@ -24,9 +24,7 @@ const ForecastChart = () => {
 
   return (
     forecastData && (
-      <div
-        className={`${styles.chart} ${IS_NIGHT ? styles.chart__night : ""}`}
-      >
+      <div className={`${styles.chart} ${IS_NIGHT ? styles.chart__night : ""}`}>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -35,21 +33,13 @@ const ForecastChart = () => {
               tick={{ fill: IS_NIGHT ? "#e2d6d6" : "#333" }}
             />
             <YAxis unit="°C" tick={{ fill: IS_NIGHT ? "#e2d6d6" : "#333" }} />
-            <Tooltip />
+            <Tooltip formatter={(value: number) => `${value}°C`} />
             <Line
-              type="monotone"
-              dataKey="morning"
-              stroke="#ffa500"
-              dot
-              name="Morning"
+              dataKey="min"
+              stroke={IS_NIGHT ? "#7bb4ff;" : "#3478d0"}
+              name="Min temp"
             />
-            <Line
-              type="monotone"
-              dataKey="evening"
-              stroke="#3478d0"
-              dot
-              name="Evening"
-            />
+            <Line dataKey="max" stroke="#d03800" name="Max temp" />
           </LineChart>
         </ResponsiveContainer>
       </div>

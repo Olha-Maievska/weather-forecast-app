@@ -59,6 +59,8 @@ export interface ForecastItem {
   main: {
     temp: number;
     humidity: number;
+    temp_min: number;
+    temp_max: number;
   };
   weather: {
     description: string;
