@@ -1,4 +1,4 @@
-import type { ForecastData } from '@/interfaces/forecast.interface';
+import type { ForecastData } from "@/interfaces/forecast.interface";
 
 export const getGroupedForecast = (
   forecastData: ForecastData,

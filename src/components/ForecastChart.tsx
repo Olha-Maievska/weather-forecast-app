@@ -36,7 +36,7 @@ const ForecastChart = () => {
             <Tooltip formatter={(value: number) => `${value}°C`} />
             <Line
               dataKey="min"
-              stroke={IS_NIGHT ? "#7bb4ff;" : "#3478d0"}
+              stroke={IS_NIGHT ? "#7bb4ff" : "#3478d0"}
               name="Min temp"
             />
             <Line dataKey="max" stroke="#d03800" name="Max temp" />
